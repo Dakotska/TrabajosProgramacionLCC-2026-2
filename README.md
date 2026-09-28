@@ -1,148 +1,123 @@
 <div align="center">
 
-  <!-- Encabezado con efecto / Banner Dinámico -->
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&pause=1000&color=F7DF1E&center=true&vCenter=true&width=600&lines=LCC+--+Unison;Angel+Adrian+Barragan+Ruiz;Expediente:+226203625;Portafolio+de+Codigo+y+Proyectos" alt="Typing SVG" />
+  <!-- LOGOS ENCABEZADO -->
+  <p align="center">
+    <img src="https://i.imgur.com/XtlMDOC.png" width="150" height="185" alt="UNISON Logo" />
+    &nbsp;&nbsp;
+    <img src="https://i.imgur.com/ghg7KMr.png" width="250" height="300" alt="LCC Logo" />
+  </p>
 
-  <br/>
+  <!-- UNISON & CARRERA -->
+  <h1><b>UNIVERSIDAD DE SONORA</b></h1>
+  <h4>Division de Ciencias Exactas y Naturales | Departamento de Matemáticas</h4>
+  <h3><b>Licenciatura en Ciencias de la Computación (LCC)</b></h3>
 
-  <!-- Badges de Identidad -->
-  ![](https://img.shields.io/badge/Estudiante-LCC_Unison-00529B?style=for-the-badge&logo=academic-cap&logoColor=white)
-  ![](https://img.shields.io/badge/Expediente-226203625-D32F2F?style=for-the-badge)
-  ![](https://img.shields.io/badge/Estado-En_Progreso-2E7D32?style=for-the-badge)
+
+  <!-- BADGES DE INFORMACIÓN -->
+  <p align="center">
+    <a href="https://github.com/Dakotska"><img src="https://img.shields.io/badge/Estudiante-%C3%81ngel_Adri%C3%A1n_Barrag%C3%A1n_Ru%C3%ADz-0284C7?style=for-the-badge&logo=github&logoColor=white" /></a>
+    <img src="https://img.shields.io/badge/Expediente-226203625-38BDF8?style=for-the-badge&labelColor=0F172A" />
+    <img src="https://img.shields.io/badge/Estado-En_Curso_-22C55E?style=for-the-badge" />
+  </p>
 
 </div>
 
+<hr/>
+
+## 📌 Acerca de este Repositorio
+
+¡Hola! 👋 Este repositorio es mi bitácora y portafolio académico donde guardo mis prácticas, tareas, algoritmos y proyectos desarrollados a lo largo de la carrera de **Licenciatura en Ciencias de la Computación** en la Universidad de Sonora.
+
+El objetivo es llevar un registro continuo de mi evolución como programador semestre a semestre.
+
 ---
 
-## 📌 Acerca del Repositorio
-
-¡Hola! 👋 Soy **Ángel Adrián Barragán Ruíz**. Este repositorio sirve como mi bitácora y archivo dinámico para almacenar trabajos, tareas y proyectos desarrollados a lo largo de la carrera de **Licenciatura en Ciencias de la Computación (LCC)** en la Universidad de Sonora.
-
----
-
-## 🛠️ Tecnologías y Lenguajes por Semestre
+## 🛠️ Lenguajes y Tecnologías
 
 <div align="center">
-
-  ### Lenguajes e Herramientas en Uso
-  <!-- Skill Icons dinámicos -->
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=python,git,github,vscode,linux,c,cpp,java,html,css" />
-  </a>
-
+  <svg width="48" height="48" viewBox="0 0 48 48" style="vertical-align: middle; margin-left: 2px;">
+    <rect width="48" height="48" rx="12" fill="#18181b"/>
+    <image href="https://i.imgur.com/DdCTIVz.png" x="0" y="1" width="48" height="48"/>
+  </svg>
+  <img src="https://skillicons.dev/icons?i=py,github,git,vscode,bash,linux&theme=dark" alt="Skill Icons" style="vertical-align: middle;" />
 </div>
 
-<br/>
-
-| Icono | Lenguaje / Herramienta | Nivel / Uso | Semestre |
-| :-: | :--- | :--- | :-: |
-| 📝 | **PSeInt** | Lógica de programación y Pseudocódigo | 1º Semestre |
-| 🐍 | **Python** | Fundamentos, POO y Algoritmos | 1º y 2º Semestre |
-| ⚙️ | **C / C++** | Estructuras de datos y Bajo nivel | *(Próximamente)* |
-| ☕ | **Java** | Programación Orientada a Objetos Avanzada | *(Próximamente)* |
-| 🐧 | **Linux / Bash** | Entorno de desarrollo y comandos | En proceso |
 
 ---
 
 ## 📊 Mis Estadísticas de GitHub
 
 <div align="center">
-
-  <!-- Tarjetas dinámicas de GitHub -->
   <img height="165em" src="https://github-readme-stats.vercel.app/api?username=tu-usuario&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true"/>
   <img height="165em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=tu-usuario&layout=compact&theme=tokyonight&hide=html,css"/>
+</div>
 
-  <br/><br/>
+<br/>
 
-  <!-- Racha de Commits -->
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=tu-usuario&theme=tokyonight" alt="GitHub Streak" />
-
+<div align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Dakotska&theme=tokyonight" alt="GitHub Streak" />
 </div>
 
 ---
 
-## 📚 Avance y Contenido por Semestres
+## 🎓 Progreso de la Carrera
 
-### 📈 Progreso General de la Carrera
-`[████░░░░░░░░░░░░░░░░] 20% Completado`
-
----
-
-<details open>
-<summary><b>🔹 Semestre 1 — Fundamentos y Lógica de Programación</b> (Clic para desplegar)</summary>
-
-<br/>
-
-> **Especialidad del Semestre:** Lógica de algoritmos en PSeInt y primeros pasos en Python.
-
-#### 📂 PSeInt (Algoritmos)
-- [x] **Práctica 01:** Variables y estructuras secuenciales.
-- [x] **Práctica 02:** Estructuras condicionales (`Si-Entonces`, `Según`).
-- [x] **Práctica 03:** Ciclos y bucles (`Mientras`, `Para`, `Repetir`).
-- [ ] **Proyecto Integrador:** *Resolución de algoritmos complejos*.
-
-#### 🐍 Python (Introducción)
-- [x] **Módulo 1:** Tipos de datos, variables y lectura de datos.
-- [x] **Módulo 2:** Control de flujo y funciones.
-- [ ] **Módulo 3:** Estructuras de datos (Listas, Tuplas, Diccionarios).
-
----
-</details>
+```text
+[█░░░░░░░░░░░░░░░░░░░░░░] 5% Completado (Semestre 1 - En Curso)
+```
 
 <details>
-<summary><b>🔹 Semestre 2 — Estructuras de Datos y POO</b> (Clic para desplegar)</summary>
-
+<summary><b>📂 Semestre 1 (Lógica, PSeInt & Introducción a Python)</b></summary>
 <br/>
 
-> **Especialidad del Semestre:** Programación Orientada a Objetos y análisis de complejidad.
+#### 📄 PSeInt
+- [x] **Práctica 1:** Variables, operadores y secuenciación.
+- [x] **Práctica 2:** Estructuras condicionales (`Si-Entonces`, `Según`).
+- [x] **Práctica 3:** Estructuras repetitivas (`Mientras`, `Para`, `Repetir`).
+- [ ] **Proyecto Final:** Por Definir.
 
-- [ ] **Materia 1:** *Estructuras de datos en Python / C++*
-- [ ] **Materia 2:** *Matemáticas Discretas / Álgebra*
-- [ ] **Proyectos:** *Próximamente...*
-
----
-</details>
-
-<details>
-<summary><b>🔹 Semestre 3 — Programación Avanzada y Bases de Datos</b> (Clic para desplegar)</summary>
-
-<br/>
-
-- [ ] *Próximamente...*
+#### 🐍 Python
+- [ ] **Unidad 1:** Sintaxis básica, I/O y tipos de datos.
+- [ ] **Unidad 2:** Estructuras de control de flujo y funciones.
+- [ ] **Unidad 3:** Listas, diccionarios y manejo de archivos.
 
 </details>
 
 <details>
-<summary><b>🔹 Semestre 4 — Ingeniería de Software y Sistemas Operativos</b> (Clic para desplegar)</summary>
-
+<summary><b>📂 Semestre 2 (Próximamente)</b></summary>
 <br/>
 
-- [ ] *Próximamente...*
+- [ ] *Por definir*
 
 </details>
 
 <details>
-<summary><b>🔹 Semestres 5 al 8 — Especialización y Proyecto Final</b> (Clic para desplegar)</summary>
-
+<summary><b>📂 Semestre 3</b></summary>
 <br/>
 
-- [ ] *Semestre 5*
-- [ ] *Semestre 6*
-- [ ] *Semestre 7*
-- [ ] *Semestre 8*
+- [ ] *Por definir*
+</details>
 
+<details>
+<summary><b>📂 Semestres 4 al 8</b></summary>
+<br/>
+
+- [ ] Avanzando en la LCC... 🚀
 </details>
 
 ---
 
-## 🚀 Instalación y Uso
+## 🚀 Cómo Ejecutar los Proyectos
 
-1. **Clona el repositorio:**
+1. **Clonar el repositorio:**
    ```bash
-   git clone https://github.com/tu-usuario/nombre-del-repo.git
+   git clone https://github.com/tu-usuario/tu-repositorio.git
    ```
+
 2. **Ejecutar archivos de PSeInt:**
-   Abre [PSeInt](http://pseint.sourceforge.net/) y ejecuta los archivos `.psc`.
+   - Abrir [PSeInt](http://pseint.sourceforge.net/).
+   - Cargar los archivos con extensión `.psc`.
+
 3. **Ejecutar scripts de Python:**
    ```bash
    python3 nombre_del_archivo.py
@@ -152,13 +127,8 @@
 
 <div align="center">
 
-  ### ✉️ Contacto
-  
   **Ángel Adrián Barragán Ruíz**  
-  💻 *Licenciatura en Ciencias de la Computación — Unison*  
-  🆔 *Expediente:* `226203625`
-
-  [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:tu-correo@alumnos.unison.mx)
-  [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tu-usuario)
+  *Licenciatura en Ciencias de la Computación — Unison*  
+  *Expediente: 226203625*
 
 </div>
