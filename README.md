@@ -132,7 +132,7 @@ Progreso General: [█░░░░░░░░░░░░░░░░░░░�
 
 <div align="center">
 
-  **Ángel Adrián Barragán Ruíz**  
+  **Ángel Adrián Barragán Ruiz**  
   *Licenciatura en Ciencias de la Computación — Universidad de Sonora*  
   *Expediente: 226203625*
 
