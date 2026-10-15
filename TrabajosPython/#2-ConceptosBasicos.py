@@ -1,3 +1,8 @@
+# #2-ConceptosBasicos.py
+# Descripción del programa: 
+# Autor/es: Ángel Adrián Barragán Ruiz
+# Fecha: 2026-10-15
+
 # Tipos de datos
 
 # * Enteros (int)

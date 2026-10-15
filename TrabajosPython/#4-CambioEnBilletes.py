@@ -1,3 +1,8 @@
+# #4-CambioEnBilletes.py
+# Descripción del programa: 
+# Autor/es: Ángel Adrián Barragán Ruiz
+# Fecha: 2026-10-15
+
 import sys
 
 print("Calculadora de cambio según billetes.")

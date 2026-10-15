@@ -1,3 +1,8 @@
+# #1-Comentarios.py
+# Descripción del programa: 
+# Autor/es: Ángel Adrián Barragán Ruiz
+# Fecha: 2026-10-15
+
 #Este es un comentario de una sola línea
 
 # ! Este es un comentario de avisos importantes
