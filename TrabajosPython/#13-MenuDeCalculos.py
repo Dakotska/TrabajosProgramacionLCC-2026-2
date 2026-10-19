@@ -16,7 +16,7 @@ while True:
     opcion = int(input("Ingresa tu opción: "))
     if opcion < 0 or opcion > 3:
         print("")
-        print("Ingresa una opcion valida del 0 al 4", file=sys.stderr)
+        print("*Ingresa una opción valida del 0 al 4*", file=sys.stderr)
         continue
 
     print("")

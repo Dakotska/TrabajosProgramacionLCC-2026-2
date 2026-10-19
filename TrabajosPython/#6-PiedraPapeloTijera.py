@@ -16,3 +16,15 @@ print("(2) papel")
 print("(3) tijera")
 jugador = int(input("Ingresa tu opción: "))
 
+if jugador >= 1 and jugador <= 3:
+    if pc == jugador:
+        print("¡Empate!")
+    elif pc == 1 and jugador == 2 or pc == 2 and jugador == 3 or pc == 3 and jugador == 1:
+        print("¡Ganaste! :)")
+    else:
+        print("¡Perdiste! :(")
+    
+    print("")
+    print(f"Elegiste: {jugador} y la cpu: {pc}")
+else:
+    print("Ingresa un numero entre 1 y 3.")
