@@ -1,8 +1,8 @@
 import math as mt
 
-# ! Casos de usos de la libreria math
+# ! Casos de usos de la librería math
 
-# * Numeros de punto flotante
+# * Números de punto flotante
 
 # mt.fabs(x) Valor absulto de x
 
