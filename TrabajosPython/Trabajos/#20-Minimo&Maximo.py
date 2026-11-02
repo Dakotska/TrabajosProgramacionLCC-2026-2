@@ -17,9 +17,7 @@ while True:
             cantElementos = int(input("Ingresa el numero de elementos: "))
 
         for i in range(0, cantElementos):
-            num = int(input(f"Ingresa el elemento {i+1}: "))
-            while num < 0:
-                num = int(input(f"Ingresa el elemento {i+1}: "))
+            num = float(input(f"Ingresa el elemento {i+1}: "))
 
             if i != 0:
                 if num < min:
