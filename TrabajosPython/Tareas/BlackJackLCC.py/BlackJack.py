@@ -6,9 +6,13 @@ Fecha: 10/11/2026
 Grupo: 7
 """
 
+# Importe de librerías
+
 import tkinter as tk
 from random import shuffle
 import time
+
+# Definición de variables globales
 
 DENOMINACIONES = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 PALOS = ["♥", "♦", "♣", "♠"]
@@ -19,19 +23,27 @@ puntCrupier = 0
 jugador = []
 puntJugador = 0
 
-# ╔═══════ ≪ ° <> ° ≫ ═══════╗
+# ╔═══════ ≪ ° <Funcion Iniciar Juego> ° ≫ ═══════╗
 
 def InicioJuego() -> None:
     """
+        Inicializa la partida repartiendo dos cartas de manera alternada al crupier y al jugador.
+        Limpia la mesa, restablece las variables globales y reparte las manos iniciales.
+        Posteriormente verifica si con la mano inicial hay algún Blackjack y decide al ganador, de lo contrario sigue el juego normal.
 
-    Inicializa la partida repartiendo dos cartas de manera alternada al crupier y al jugador.
-    
-    Limpia la mesa, restablece las variables globales y reparte las manos iniciales. 
-    Posteriormente verifica si con la mano inicial alguien superó el límite de puntos o si hay Blackjack.
-
+        Globals:
+        PALOS (list): Palos predefinidos de las cartas.
+        DENOMINACIONES (list): Denominaciones predefinidas de las cartas.
+        Baraja (list): Baraja completa de 52 combinaciones según los palos y denominaciones.
+        crupier (list): Mano del crupier.
+        segundaCartaCrupier (list): Segunda carta del crupier la cual esta oculta.
+        puntCrupier (int): Puntuación total actual del crupier.
+        jugador (list): Mano del jugador.
+        puntJugador (int): Puntuación total actual del jugador.
     """
     global PALOS, DENOMINACIONES, baraja, crupier, segundaCartaCrupier, puntCrupier, jugador, puntJugador
 
+    # Se acomodan los botones y se ponen disponibles para el usuario.
     menu.place_forget()
     textoMenu.grid_forget()
     botonInicio.grid_forget()
@@ -44,6 +56,7 @@ def InicioJuego() -> None:
         dibujo.destroy()
     barraPuntJugador.config(bg="green")
 
+    # Se reinician las variables globales para el siguiente juego y se barajea.
     baraja = [(den, palo) for palo in PALOS for den in DENOMINACIONES]
     crupier = []
     segundaCartaCrupier = []
@@ -53,12 +66,14 @@ def InicioJuego() -> None:
 
     shuffle(baraja)
 
+    # Entrega 4 cartas de forma alternada, 2 para el jugador y 2 para el crupier.
     for i in range(2):
         JalarCarta(True)
         JalarCarta(False)
 
+    # Se verifica si alguno de los dos hizo blackjack de manera natural,
+    # si es asi muestra las cartas del crupier y determina el ganador finalizando el juego.
     estado = VerificarBlackjack()
-
     if estado != 0:
         hijos = marcoManoCrupier.winfo_children()
         hijos[1].destroy()
@@ -74,21 +89,20 @@ def InicioJuego() -> None:
         elif estado == 3:
             MostrarFinJuego(3)
 
-# ╚═══════ ≪ ° </> ° ≫ ═══════╝
+# ╚═══════ ≪ ° </Funcion Iniciar Juego> ° ≫ ═══════╝
 
-# ╔═══════ ≪ ° <> ° ≫ ═══════╗
+# ╔═══════ ≪ ° <Funcion Pedir> ° ≫ ═══════╗
 
 def Pedir():
     """
-
         Función ejecutada por el botón "Pedir".
-
         Le entrega una carta adicional al jugador y evalúa si este excedió los 21 puntos.
         De ser así, se revela la carta oculta del crupier y la partida termina en victoria para la casa.
-
     """
+    # Llama a la funcion Jalar carta y se la asigna al jugador.
     JalarCarta(True)
 
+    # Verifica si el jugador se paso del puntaje, muestra las cartas del crupier y finaliza el juego.
     if VerificarSobrepuntaje() == 2:
         hijos = marcoManoCrupier.winfo_children()
         hijos[1].destroy()
@@ -99,23 +113,31 @@ def Pedir():
         barraPuntCrupier.configure(bg="green")
         MostrarFinJuego(1)
 
-# ╚═══════ ≪ ° </> ° ≫ ═══════╝
+    if VerificarBlackjack() == 2:
+        botonPedir.configure(state="disabled")
 
-# ╔═══════ ≪ ° <> ° ≫ ═══════╗
+# ╚═══════ ≪ ° </Funcion Pedir> ° ≫ ═══════╝
+
+# ╔═══════ ≪ ° <Funcion Plantarse> ° ≫ ═══════╗
 
 def Plantarse() -> None:
     """
-
         Función ejecutada por el botón "Plantar".
-
         Da por terminado el turno del jugador. Revela la carta oculta del crupier y
         hace que este pida cartas obligatoriamente hasta alcanzar al menos 17 puntos.
         Posteriormente, verifica los puntajes finales y decide al ganador.
-
     """
+
+    # Deshabilita los botones de pedir y plantar.
+    botonPedir.config(state="disabled")
+    botonPlantar.config(state="disabled")
+
+    # Muestra la segunda carta del crupier
     hijos = marcoManoCrupier.winfo_children()
     hijos[1].destroy()
     MostrarCarta(segundaCartaCrupier[0], False)
+
+    # Revela la segunda carta del crupier y le agrega una carta a su mano mientras su puntuación total sea menor que 17.
     if puntCrupier >= 17:
         textoPuntCrupier.configure(text=f"{puntCrupier}/21")
         bordeBarraCrupier.columnconfigure(0, weight=puntCrupier)
@@ -124,9 +146,8 @@ def Plantarse() -> None:
     while puntCrupier < 17:
         JalarCarta(False)
 
-    botonPedir.config(state="disabled")
-    botonPlantar.config(state="disabled")
-
+    # Verifica si el crupier se pasa de 21, y luego evalúa si fue un empate, si gano el jugador por mayoría de puntos sin pasarse o
+    # si gano el crupier por mayoría de puntos sin pasarse.
     if VerificarSobrepuntaje() == 1:
         MostrarFinJuego(2)
     estado = VerificarPuntajesFinales()
@@ -137,7 +158,7 @@ def Plantarse() -> None:
     elif estado == 2:
         MostrarFinJuego(2)
 
-# ╚═══════ ≪ ° </> ° ≫ ═══════╝
+# ╚═══════ ≪ ° </Funcion Plantarse> ° ≫ ═══════╝
 
 # ╔═══════ ≪ ° </> ° ≫ ═══════╗
 
@@ -161,22 +182,32 @@ def JalarCarta(esJugador: bool):
 
             >>> JalarCarta(True)
             >>> JalarCarta(False)
-    
+
     """
+    # Se tratan las excepciones
     if not isinstance(esJugador, bool):
         raise TypeError("ERROR: El argumento esJugador no es un booleano.")
 
+    # Se definen las variables globales
     global crupier, jugador, puntCrupier, puntJugador
 
+    # Evalua si es el jugador o el crupier el que pidió la carta.
     if esJugador:
+        # Se saca una carta de la baraja y se agrega a la mano del jugador y se rendariza la carta.
         carta = baraja.pop()
         jugador.append(carta)
         MostrarCarta(carta, True)
+
+        # Si es un As, Jota, Reina o Rey se manda a llamar a la función arreglar valores y
+        # se le asigna el valor devuelto por la función a la puntuación del jugador.
         if carta[0] in "AJQK":
             jugador.pop()
             jugador.append(ArreglarValores(True, carta))
+
         puntJugador += int(jugador[-1][0])
         textoPuntJugador.configure(text=f"{puntJugador}/21")
+
+        # Se le cambia el color a la barra de puntuación según si es menor o igual a 21 o no.
         if puntJugador <= 21:
             bordeBarraJugador.columnconfigure(0, weight=puntJugador)
             bordeBarraJugador.columnconfigure(1, weight=(21 - puntJugador))
@@ -185,13 +216,21 @@ def JalarCarta(esJugador: bool):
             bordeBarraJugador.columnconfigure(1, weight=0)
             barraPuntJugador.configure(bg="red")
     else:
+        # Se saca una carta de la baraja y se agrega a la mano del crupier y se renderiza la carta.
         carta = baraja.pop()
         crupier.append(carta)
         MostrarCarta(carta, False)
+
+        # Si es un As, Jota, Reina o Rey se manda a llamar a la función arreglar valores y
+                # se le asigna el valor devuelto por la función a la puntuación del crupier.
         if carta[0] in "AJQK":
             crupier.pop()
             crupier.append(ArreglarValores(False, carta))
+
         puntCrupier += int(crupier[-1][0])
+
+        # En caso de que el jugador todavia no se haya plantado, oculta la carta y puntuación del crupier,
+        # Si no, muestra el puntaje actual del crupier y ae le cambia el color a la barra de puntuación según si es menor o igual a 21 o no.
         if len(crupier) <= 2:
             textoPuntCrupier.configure(text=f"?/21")
             puntCrupierConocida = int(crupier[0][0])
@@ -229,10 +268,13 @@ def VerificarBlackjack() -> int:
             >>> puntCrupier = 17
             >>> VerificarBlackjack()
             2
-    
+
     """
+    # Se definen las variables globales
     global puntJugador, puntCrupier
 
+    # Se evalua si hubo un empate de blackjack natural, un blackjack del jugador natural o un blackjack del crupier natural,
+    # en caso de no haber pasado ninguna de las 3 devuelve 0
     if puntCrupier == 21 and puntJugador == 21:
         return 3
     elif puntJugador == 21:
@@ -255,10 +297,12 @@ def VerificarSobrepuntaje() -> int:
 
             int: Devuelve `0` si nadie se ha pasado, `1` si el crupier se pasó de 21,
             `2` si el jugador se pasó de 21.
-    
+
     """
+    # Se definen las variables globales
     global puntJugador, puntCrupier
 
+    # Evalua si se paso de 21 el crupier o el jugador, en caso de que no devuelve 0
     if puntCrupier > 21:
         return 1
     elif puntJugador > 21:
@@ -280,11 +324,14 @@ def VerificarPuntajesFinales() -> int:
 
             int: Devuelve `1` si el crupier ganó, `2` si el jugador ganó,
             y `3` si fue un empate.
-    
+
     """
+    # Se definen las variables globales
     global puntJugador, puntCrupier
 
-    if puntJugador == puntCrupier:
+    # Evalua si hubo un empate, si gano el jugador o si gano el crupier, todo legal sin pasarse de 21,
+    # en caso de que ninguna de las 3 suceda devuelve 0.
+    if (puntJugador == puntCrupier) and (puntJugador <= 21 and puntCrupier <= 21):
         return 3
     elif (puntJugador > puntCrupier) and puntJugador <= 21:
         return 2
@@ -313,19 +360,27 @@ def ArreglarValores(esJugador: bool, carta: tuple) -> tuple:
         Returns:
 
             tuple: Nueva tupla con el valor numérico ajustado y el mismo palo.
-    
+
     """
+
+    # Evalua si se esta corrigiendo al jugador o al crupier.
     if esJugador:
+        # Si la carta es jota, reina o rey devuelve la denominación 10.
         if carta[0] in "JQK":
             return (10,carta[1])
+
+        # Si es un As, devuelve la denominación que mas le combiene al jugador, ya sea 11 o 1.
         else:
             if 11 + puntJugador > 21:
                 return (1,carta[1])
             else:
                 return (11,carta[1])
     else:
+        # Si la carta es jota, reina o rey devuelve la denominación 10.
         if carta[0] in "JQK":
             return (10,carta[1])
+
+        # Si es un As, devuelve la denominación que mas le combiene al crupier, ya sea 11 o 1.
         else:
             if 11 + puntCrupier > 21:
                 return (1,carta[1])
@@ -353,8 +408,9 @@ def MostrarCarta(carta: tuple, esJugador: bool):
 
             TypeError: Si `carta` no es tupla o `esJugador` no es booleano.
             ValueError: Si el formato de la carta es inválido.
-    
+
     """
+    # Evalua las excepciones.
     if not isinstance(carta, tuple) or not isinstance(esJugador, bool):
         raise TypeError("El argumento carta debe ser una tupla y el argumento es jugador debe ser un lógico")
     if not len(carta) == 2:
@@ -365,8 +421,11 @@ def MostrarCarta(carta: tuple, esJugador: bool):
         raise ValueError("El primer elemento del argumento carta que tiene 2 caracteres debe ser la cadena '10'.")
     global crupier, jugador, segundaCartaCrupier
 
+    # Se asignan el valor y el palo a las variables.
     valor = carta[0]
     palo = carta[1]
+
+    # En caso de que sea un solo dígito se dibuja una carta a la medida.
     if len(valor) == 1:
         textoCarta = (
             f"┌───────┐\n"
@@ -377,6 +436,7 @@ def MostrarCarta(carta: tuple, esJugador: bool):
             f"│      {valor}│\n"
             f"└───────┘"
         )
+    # En caso de que sea de 2 dígitos se dibuja una carta a la medida.
     else:
         textoCarta = (
             f"┌───────┐\n"
@@ -387,10 +447,15 @@ def MostrarCarta(carta: tuple, esJugador: bool):
             f"│     {valor}│\n"
             f"└───────┘"
         )
+
+    # Evalúa si es el jugador o es el crupier.
     if esJugador:
+        # Renderiza la carta normal sin taparla y se configura.
         dibujoCarta = tk.Label(marcoManoJugador, text=textoCarta, font=("Courier New", 11, "bold"), bg="white")
         dibujoCarta.grid(column=jugador.index(carta), row=0, sticky="w")
     else:
+        # Determina si es su primer o segunda carta, en caso de ser la primera la renderiza y configura de forma normal.
+        # En caso de ser la segunda la oculta y configura de diferente manera.
         if len(segundaCartaCrupier) != 0 and carta == segundaCartaCrupier[0]:
             dibujoCarta = tk.Label(marcoManoCrupier, text=textoCarta, font=("Courier New", 11, "bold"), bg="white")
             dibujoCarta.grid(column=4, row=0, sticky="e")
@@ -420,7 +485,6 @@ def MostrarCarta(carta: tuple, esJugador: bool):
 
 def MostrarFinJuego(estado: int):
     """
-
         Muestra la interfaz de final de partida.
 
         Despliega un menú superpuesto anunciando al ganador, desactiva los botones
@@ -434,13 +498,15 @@ def MostrarFinJuego(estado: int):
 
             TypeError: Si el `estado` proporcionado no es un número entero.
             ValueError: Si el `estado` no está en el rango válido (1, 2, 3).
-    
+
     """
+    # Evalua las excepciones.
     if not isinstance(estado, int):
         raise TypeError("El argumento estado debe ser un número entero.")
     if not 1 <= estado <= 3:
         raise ValueError("El argumento estado debe ser un número entero de 1 a 3.")
 
+    # Se configuran los estados de los botones y se configura el menu.
     botonPedir.config(state="disabled")
     botonPlantar.config(state="disabled")
 
@@ -448,12 +514,15 @@ def MostrarFinJuego(estado: int):
     menu.rowconfigure((0, 1), weight=1)
     menu.columnconfigure(0, weight=1)
 
+    # Evalua si gano el crupier, si hubo un empate o si gano el jugador
     if estado == 1:
         textoEstado = "Gana CRUPIER!"
     elif estado == 2:
         textoEstado = "Gana JUGADOR!"
     else:
         textoEstado = "EMPATE!"
+
+    # Renderiza el mensaje de ganador, perderdor o empate segun el resultado y muestra las opciones de volver a iniciar un juego o salir del programa.
     textoMenu.config(text=textoEstado, font=("OCR A EXTENDED", 50, "bold"), bg="#58101b")
     textoMenu.grid(column=0, row=0, sticky="n", pady=(15, 0))
 
@@ -464,7 +533,8 @@ def MostrarFinJuego(estado: int):
     botonSalir.grid(column=0, row=1, sticky="s", pady=(0,15), padx=(200, 0))
 
 # ╚═══════ ≪ ° </> ° ≫ ═══════╝
-#####################################
+
+# ! ////////////Programa Principal/////////////////
 
 if __name__ == "__main__":
 
